@@ -22,24 +22,6 @@ Parse & process maintenance notification emails from service providers.  Match u
 
 A deliberately vague data pipeline is specified since not many details about the practical environment are known.
 
-Some new database tables are defined:
-
-* `CircuitOutageEvent` table populated by our new outage detector
-* `MaintForecastEvent` table populated by our new maintenance email processor
-* `SlaMeasurements` table populated by our new SLA performance evaluator
-* `SlaPromises` table containing data about contractual SLAs expressed so software can understand it
-  * `PromisedUptimePct` such as 99.9% uptime/availability
-  * `IntervalDuration` describing the duration of Sla intervals, such as `calendarMonthFromFirst`, `calendarMonthFromTurnupDay`, `bankersMonth` (30d), and any others.
-  * `CodeClass` giving the name of actual Python class implementing the Sla algorithm.  Maybe overkill, but if some SLAs are weird, it would be nice to sub-class for legibility.
-  * Might need to add relationships for any diversity/protection arrangements among circuits -- understanding that "dark" services don't exactly have protection; but if you buy a ring and it's promised it won't have two cuts at once, you need a way to recognize what circuits belong to that ring
-* `SlaVendorApplicability` table so newly-provisioned circuits can be associated with the right SLA without having to choose from a list of all SLAs in the system; UI can limit choices to those applicable to the relevant vendor
-
-A few assumptions are made about existing data resources/tables
-
-* Helpdesk system is assumed to have a labeling or workflow system so we can mark emails as having been processed successfully (or not).  It effectively functions as a dead letter file in case an email cannot be parsed and requires attention.
-* Some kind of `Circuit` table containing vendor & internal circuit IDs
-* Some kind of table mapping equipment ports to circuits for outage detection, in association with events from LogSystem
-
 ```mermaid
 graph LR
     Helpdesk
@@ -65,6 +47,24 @@ graph LR
     Sla --> SlaPE
     SlaPE --> SlaPM
 ```
+
+Some new database tables are defined:
+
+* `CircuitOutageEvent` table populated by our new outage detector
+* `MaintForecastEvent` table populated by our new maintenance email processor
+* `SlaMeasurements` table populated by our new SLA performance evaluator
+* `SlaPromises` table containing data about contractual SLAs expressed so software can understand it
+  * `PromisedUptimePct` such as 99.9% uptime/availability
+  * `IntervalDuration` describing the duration of Sla intervals, such as `calendarMonthFromFirst`, `calendarMonthFromTurnupDay`, `bankersMonth` (30d), and any others.
+  * `CodeClass` giving the name of actual Python class implementing the Sla algorithm.  Maybe overkill, but if some SLAs are weird, it would be nice to sub-class for legibility.
+  * Might need to add relationships for any diversity/protection arrangements among circuits -- understanding that "dark" services don't exactly have protection; but if you buy a ring and it's promised it won't have two cuts at once, you need a way to recognize what circuits belong to that ring
+* `SlaVendorApplicability` table so newly-provisioned circuits can be associated with the right SLA without having to choose from a list of all SLAs in the system; UI can limit choices to those applicable to the relevant vendor
+
+A few assumptions are made about existing data resources/tables
+
+* Helpdesk system is assumed to have a labeling or workflow system so we can mark emails as having been processed successfully (or not).  It effectively functions as a dead letter file in case an email cannot be parsed and requires attention.
+* Some kind of `Circuit` table containing vendor & internal circuit IDs
+* Some kind of table mapping equipment ports to circuits for outage detection, in association with events from LogSystem
 
 # Database ERD
 
