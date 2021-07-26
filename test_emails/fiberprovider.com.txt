@@ -1,0 +1,35 @@
+Subject: Planned Work PWIC12345 Notification from Fiber Provider to AwesomeCorp, 2019-Apr-09 06:00 - 2019-Apr-09 10:00 UTC
+
+Body:
+PLANNED WORK (PW) Notification from Fiber Provider
+
+Customer: AwesomeCorp
+
+PW Reference number: PWIC12345
+Your affected services are listed further below.
+
+Maintenance window:
+Start Date and Time: 2019-Apr-09 06:00 UTC
+End Date and Time: 2019-Apr-09 10:00 UTC
+(Please note - for customers in USA: CST = UTC - 6hours, CDT = UTC - 5hours)
+Action and Reason: Fault repair work. Card replacement due to malfunction transmission system card. New try for cancelled PWIC45678.
+
+Location of work: Santa Clara, CA, US
+
+The same information can also be found in the form of tables in the attached files.
+
+Please note! If there is a need to manually restore your equipment as a consequence of the planned work this is outside of the responsibility of Fiber Provider.
+----------------------------------------------------------------------
+
+Affected service(s) and impact at any time during the maintenance window given above:
+
+Service ID: IC-99999
+Impact: 1 x 3 hours interruption
+
+_______________________________________________________________________
+
+We sincerely regret any inconvenience this planned work may cause you.
+
+If you have any questions regarding the planned work, if you would like to report a fault or adjust your contact information - please contact our Customer Support Centre:
+E-mail: noc@fiberprovider.com
+Phone: 8675309
